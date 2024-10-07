@@ -1,0 +1,61 @@
+class VirtualPet:
+    def __init__(self):
+        self.happiness = 50
+        self.hunger = 50
+
+    def feed(self):
+        if self.hunger > 0:
+            self.hunger -= 10
+            print("You fed your pet! Hunger decreased.")
+        else:
+            print("Your pet is not hungry!")
+
+    def play(self):
+        if self.happiness < 100:
+            self.happiness += 10
+            print("You played with your pet! Happiness increased.")
+        else:
+            print("Your pet is already very happy!")
+
+    def check_status(self):
+        print(f"Happiness Level: {self.happiness}")
+        print(f"Hunger Level: {self.hunger}")
+
+    def is_alive(self):
+        if self.hunger >= 100:
+            print("Your pet is too hungry and has run away!")
+            return False
+        return True
+
+
+def main():
+    pet = VirtualPet()
+    
+    while True:
+        print("\nWhat would you like to do?")
+        print("1. Feed your pet")
+        print("2. Play with your pet")
+        print("3. Check pet's status")
+        print("4. Quit")
+        
+        choice = input("Enter your choice (1-4): ")
+        
+        if choice == '1':
+            pet.feed()
+        elif choice == '2':
+            pet.play()
+        elif choice == '3':
+            pet.check_status()
+        elif choice == '4':
+            print("Thank you for playing!")
+            break
+        else:
+            print("Invalid choice! Please select again.")
+        
+        # Check if the pet is still alive
+        if not pet.is_alive():
+            break
+
+
+if __name__ == "__main__":
+    main()
